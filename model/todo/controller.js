@@ -6,8 +6,7 @@ class TodoController {
 		todoFacade
 			.create(req.body)
 			.then((result) => {
-				console.log(result);
-				res.status(201).send(result.dataValues);
+				res.status(201).send(result);
 			})
 			.catch((err) => next(err));
 	}
@@ -27,11 +26,10 @@ class TodoController {
 				}
 			})
 			.then((result) => {
-				console.log(result);
 				return todoFacade.findAll({ where: { id: req.params.id } });
 			})
 			.then((todo) => {
-				res.status(201).send({
+				res.status(200).send({
 					message: "Updated Successfully",
 					todo: todo
 				});
@@ -50,8 +48,7 @@ class TodoController {
 		todoFacade
 			.destroy({ where: { id: req.params.id } })
 			.then((result) => {
-				console.log(result);
-				res.status(201).send("Todo Deleted Successfully!!");
+				res.status(200).send("Todo Deleted Successfully!!");
 			})
 			.catch((err) => next(err));
 	}

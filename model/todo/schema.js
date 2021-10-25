@@ -1,5 +1,5 @@
 const Sequelize = require("sequelize");
-const dbConn = require("../../util/database");
+const dbConn = require("../../utils/database");
 const todoSchema = dbConn.define("Todo", {
 	id: {
 		type: Sequelize.UUID,
